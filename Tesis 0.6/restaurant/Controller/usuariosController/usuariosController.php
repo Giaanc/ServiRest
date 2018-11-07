@@ -20,8 +20,11 @@
 
  	public function ingresarUsuariocontroller(){
  		if (isset($_POST['guardarUsuario'])) {
- 			$datosController = array('nombreusuario'=>$_POST['nombreusuario'],
- 				                      'password'=>$_POST['password']
+ 			$datosController = array(
+                              'rut'=>$_POST['rut'],
+                              'nombre'=>$_POST['nombre'],
+ 				                      'pass'=>$_POST['pass'],
+                              'Perfil_idPerfil'=>$_POST['permisos']
  				                       );
 
  				#pedir la informacion al modelo.
@@ -52,9 +55,9 @@
 
    public function editarUsuariosController(){
       if (isset($_POST['editarUsuario'])) {
-       $datosController = array('nombreusuario' => $_POST['nombreusuario'],
-                                 'password'     => $_POST['password'],
-                                 'idusuario'    => $_POST['idusuario']);
+       $datosController = array('nombre' => $_POST['nombre'],
+                                 'pass'     => $_POST['pass'],
+                                 'rut'    => $_POST['idusuario']);
 
        $respuesta = UsuariosModel::editarUsuariosModel($datosController , 'usuarios');
 

@@ -33,18 +33,18 @@ class MvcController {
 
 	 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 	 		$hoy = date('Y-m-d');
- 		$respuesta = Datos::getReservasModel('reservas');
+ 		$respuesta = Datos::getReservasModel('reserva');
  			# code...
  		foreach ($respuesta as $row) {
- 			if ($hoy == $row['diallegada']) {
+ 			if ($hoy == $row['fechaReservada']) {
 	 			echo '<tr>			
-					<td align="center"> '.$row["nombrecliente"].'</a></td>
-					<td align="center"> '.$row["cantidadpersonas"].'</td>
+					<td align="center"> '.$row["nombreCliente"].'</a></td>
+					<td align="center"> '.$row["cantidadPersonas"].'</td>
 					<td align="center">'.$row["telefono"].'</td> 
-				  <td align="center">'.date("d-m-Y", strtotime($row["diallegada"])).'</td>
-					<td align="center">'.$row["horallegada"].'</td>
+				  <td align="center">'.date("d-m-Y", strtotime($row["fechaReservada"])).'</td>
+					<td align="center">'.$row["fechaIngresoReserva"].'</td>
 					<td align="center">'.$row["observaciones"].'</td>		
-					<td align="center"><a href="index.php?action=editarReservas&idreserva='.$row["idreserva"].'"<i class="fa fa-edit btn btn-primary btn-sm"></i></a>&nbsp;&nbsp;&nbsp;
+					<td align="center"><a href="index.php?action=editarReservas&idreserva='.$row["idReserva"].'"<i class="fa fa-edit btn btn-primary btn-sm"></i></a>&nbsp;&nbsp;&nbsp;
 					    <a href="index.php?action=reservas&idBorrar='.$row["idreserva"].'"<i class="fa fa-trash-o btn btn-danger btn-sm"></i></a>
 					</td>
 				    </tr>';
@@ -54,17 +54,17 @@ class MvcController {
  	//insertar reservas
  	public function agregarReservaController(){
          	if(isset($_POST['agregar'])) {
- 			$datosController = array("nombrecliente"=>$_POST['nombrecliente'],
- 				                     "cantidadpersonas"=>$_POST['cantidadpersonas'],
+ 			$datosController = array("nombreCliente"=>$_POST['nombrecliente'],
+ 				                     "cantidadPersonas"=>$_POST['cantidadpersonas'],
  				                      "telefono"=>$_POST['telefono'],
- 				                      "diallegada"=>$_POST['diallegada'],	              
- 				                      "horallegada"=>$_POST['horallegada'],	              
- 				                      "observaciones"=>$_POST['observaciones']
+ 				                      "fechaReservada"=>$_POST['fechareservada'],	              
+ 				                      "fechaIngresoReserva"=>$_POST['fechaingresoreserva'],	              
+ 				                      "Observaciones"=>$_POST['observaciones']
  				                                  
  				                     );
  			#pedir la informacion al modelo.
  		
- 		$respuesta= Datos::agregarReservasModel($datosController,'reservas');
+ 		$respuesta= Datos::agregarReservasModel($datosController,'reserva');
  			if ($respuesta == 'success') {
  				header('location:okReservas');
  			}else{
@@ -78,7 +78,7 @@ class MvcController {
    	 if (isset($_GET['idBorrar'])) {
    	 	$datosController = $_GET['idBorrar'];
 
-   	 	$respuesta = Datos::deleteReservaModel($datosController,'reservas');
+   	 	$respuesta = Datos::deleteReservaModel($datosController,'reserva');
    	 	if ($respuesta == 'success') {
          header('location:borrarReservas');
           
@@ -87,7 +87,7 @@ class MvcController {
    }
 //cantidad de reservas
    public function totalReservasController(){
-   	  $respuesta = Datos::totalReservasModel('reservas');
+   	  $respuesta = Datos::totalReservasModel('reserva');
    	 	foreach ($respuesta as $key ) {
  			 echo $key['total'];
  		}
@@ -97,7 +97,7 @@ class MvcController {
 
      public function editarReservasController(){
       	$datosController= $_GET['idreserva'];
-	    $respuesta =Datos::editarReservasModel($datosController, 'reservas');
+	    $respuesta =Datos::editarReservasModel($datosController, 'reserva');
 
 	    echo ' <form method="post">
           <div class="row">
@@ -159,7 +159,7 @@ class MvcController {
     			                   'observaciones'=>$_POST['observaciones'],
     			                   'idreserva'=>$_POST['idreserva']
     			);
-    	$respuesta=Datos::actualizarReservasModel($datosController,'reservas');	
+    	$respuesta=Datos::actualizarReservasModel($datosController,'reserva');	
     	  	if ($respuesta == 'success') {
       				  header('location:cambioReservas');
       		}

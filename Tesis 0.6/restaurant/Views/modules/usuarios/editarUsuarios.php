@@ -18,11 +18,11 @@
 	      	<input type="hidden" name="idusuario" value="<?php echo $value['rut'] ?>">
 			  <div class="form-group">
 			    <label for="formGroupExampleInput">Nombre Usuario</label>
-			    <input type="text" name="nombreusuario" class="form-control" id="formGroupExampleInput" value="<?php echo $value['nombre'] ?>">
+			    <input type="text" name="nombre" class="form-control" id="formGroupExampleInput" value="<?php echo $value['nombre'] ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="formGroupExampleInput2">Contraseña Usuario <span>(<i>Si no decea cambiar la contraseña deje el campo como está</i>)</span></label>
-			    <input type="password" name="password" class="form-control" id="formGroupExampleInput2"value="<?php echo $value['pass'] ?>">
+			    <input type="password" name="pass" class="form-control" id="formGroupExampleInput2"value="<?php echo $value['pass'] ?>">
 			  </div>
 		
 			<button type="submit" name="editarUsuario" class="btn btn-primary">Save changes</button>

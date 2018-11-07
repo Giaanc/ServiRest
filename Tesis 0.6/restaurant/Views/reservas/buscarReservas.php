@@ -8,8 +8,8 @@ require_once 'Views/modules/ventas/conexion.php';
 		$buscar = $_POST['buscar'];
 		$buscar= date("Y-m-d", strtotime($buscar));
        // echo "$buscar";
-		$sql = $conexion->prepare("SELECT * FROM reservas WHERE diallegada LIKE :diallegada OR nombrecliente LIKE :nombrecliente");
-		$resultado = $sql->execute(array(':diallegada'=> "%$buscar%",
+		$sql = $conexion->prepare("SELECT * FROM reserva WHERE fechaReservada LIKE :fechaReservada OR nombreCliente LIKE :nombrecliente");
+		$resultado = $sql->execute(array(':fechaReservada'=> "%$buscar%",
 			                              ':nombrecliente'=>"%$buscar%"));
 		$resultado = $sql->fetchAll(PDO::FETCH_OBJ);
 	if (empty($resultado)) {
@@ -42,12 +42,12 @@ require_once 'Views/modules/ventas/conexion.php';
 <?php foreach($resultado as $resultados): ?>
 	
 <tbody>
-	<td  class=" alert-danger"><?php echo $resultados->nombrecliente; ?></td>
-	<td  class=" alert-danger" align="center"><?php echo $resultados->cantidadpersonas; ?></td>
+	<td  class=" alert-danger"><?php echo $resultados->nombreCliente; ?></td>
+	<td  class=" alert-danger" align="center"><?php echo $resultados->cantidadPersonas; ?></td>
 	<td  class=" alert-danger"><?php echo $resultados->telefono; ?></td>
-	<td  class=" alert-danger"><?php echo date("d-m-Y", strtotime($resultados->diallegada)) ; ?></td>
-	<td  class=" alert-danger" align="center"><?php echo $resultados->horallegada; ?></td>
-	<td class=" alert-danger"><?php echo $resultados->observaciones; ?></td>
+	<td  class=" alert-danger"><?php echo date("d-m-Y", strtotime($resultados->fechaReservada)) ; ?></td>
+	<td  class=" alert-danger" align="center"><?php echo $resultados->fechaIngresoReserva; ?></td>
+	<td class=" alert-danger"><?php echo $resultados->Observaciones; ?></td>
    <td  class=" alert-danger">&nbsp; &nbsp;
    <a href="index.php?action=editarReservas&idreserva=<?php echo $resultados->idreserva;?>"><i class="fa fa-edit btn btn-primary btn-sm "></i></a>
 		<a href="index.php?action=reservas&idBorrar=<?php echo $resultados->idreserva;?>"<i class="fa fa-trash-o btn btn-danger btn-sm"></i></a></td>
