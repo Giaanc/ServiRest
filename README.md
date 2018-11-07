@@ -9,3 +9,5 @@ Productos
 Categorias
 Ventas a- Listado Ventas <- mesas
        b- Reportes Ventas
+
+BASE DE DATOS "Restaurante"
