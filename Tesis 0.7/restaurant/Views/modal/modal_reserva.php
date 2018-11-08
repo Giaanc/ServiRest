@@ -52,7 +52,22 @@
               <textarea class="form-control" id="message-text" name="observaciones" required="">Sin Restricciones</textarea>
             </div>
             </div>
-            <input type="hidden" name="idusuario" value="<?php echo $_SESSION['nombreusuario']; ?>">
+
+               <div class="col-md-6"> 
+              <div class="form-group">
+              <label for="message-text" class="form-control-label">Numero de Mesa a Reservar:</label>
+              <textarea class="form-control" id="message-text" name="idmesa" required="">1</textarea>
+            </div>
+            </div>
+
+             <div class="col-md-6"> 
+              <div class="form-group">
+              <label for="message-text" class="form-control-label">Rut Empleado:</label>
+              <textarea class="form-control" id="message-text" name="rut_empleado" readonly="">"<?php echo $_SESSION['nombre']; ?>"</textarea>
+            </div>
+            </div>
+
+            <input type="hidden" name="nombre" value="<?php echo $_SESSION['nombre']; ?>">
         </div>
         </div>
         <div class="modal-footer">

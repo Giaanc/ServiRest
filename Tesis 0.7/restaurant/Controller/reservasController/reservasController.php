@@ -54,12 +54,14 @@ class MvcController {
  	//insertar reservas
  	public function agregarReservaController(){
          	if(isset($_POST['agregar'])) {
- 			$datosController = array("nombreCliente"=>$_POST['nombrecliente'],
- 				                     "cantidadPersonas"=>$_POST['cantidadpersonas'],
+ 			$datosController = array("nombrecliente"=>$_POST['nombrecliente'],
+ 				                     "cantidadpersonas"=>$_POST['cantidadpersonas'],
  				                      "telefono"=>$_POST['telefono'],
- 				                      "fechaReservada"=>$_POST['fechareservada'],	              
- 				                      "fechaIngresoReserva"=>$_POST['fechaingresoreserva'],	              
- 				                      "Observaciones"=>$_POST['observaciones']
+ 				                      "fechareservada"=>$_POST['fechareservada'],	              
+ 				                      "fechaingresoreserva"=>$_POST['fechaingresoreserva'],	              
+ 				                      "observaciones"=>$_POST['observaciones'],
+                              "rut_empleado"=>$_POST['rut_empleado'],
+                              "idmesa"=>$_POST['idmesa']
  				                                  
  				                     );
  			#pedir la informacion al modelo.

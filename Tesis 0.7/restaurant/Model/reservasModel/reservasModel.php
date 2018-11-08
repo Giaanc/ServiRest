@@ -7,7 +7,7 @@ require_once 'Model/conexion.php';
        #-----------------------------------------------------------
        #obtener todas reservas
  	 	public function getReservasModel( $tabla){
- 	 		$sql=Conexion::conectar()->prepare("SELECT *  FROM $tabla  ORDER BY fechaReservada asc ");
+ 	 		$sql=Conexion::conectar()->prepare("SELECT *  FROM reserva  ORDER BY fechaReservada asc ");
  	 		$sql->execute();
  	 		return $sql->fetchAll();
  	 		$sql->close();
@@ -15,8 +15,8 @@ require_once 'Model/conexion.php';
 
  	 // agregar Reservas
  	 public function agregarReservasModel($datosModel,$tabla){
- 	 	  $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreCliente,cantidadPersonas,telefono,fechaReservada,fechaIngresoReserva,Observaciones)
- 	 	  	VALUES(:nombrecliente,:cantidadpersonas,:telefono,:fechareservada,:fechaingresoreserva,:observaciones)");
+ 	 	  $stmt = Conexion::conectar()->prepare("INSERT INTO reserva(nombreCliente,cantidadPersonas,telefono,fechaReservada,fechaIngresoReserva,Observaciones,Empleado_rut,Mesas_idMesas)
+ 	 	  	VALUES(:nombrecliente,:cantidadpersonas,:telefono,:fechareservada,:fechaingresoreserva,:observaciones,:rut_empleado,:idmesa)");
 
             $stmt->bindParam(':nombrecliente',$datosModel['nombrecliente'], PDO::PARAM_INT);
             $stmt->bindParam(':cantidadpersonas',$datosModel['cantidadpersonas'],PDO::PARAM_STR);
@@ -24,6 +24,8 @@ require_once 'Model/conexion.php';
             $stmt->bindParam(':fechareservada',$datosModel['fechareservada'], PDO::PARAM_STR);
             $stmt->bindParam(':fechaingresoreserva',$datosModel['fechaingresoreserva'], PDO::PARAM_STR);
             $stmt->bindParam(':observaciones',$datosModel['observaciones'], PDO::PARAM_STR);
+            $stmt->bindParam(':rut_empleado',$datosModel['rut_empleado'], PDO::PARAM_STR);
+            $stmt->bindParam(':idmesa',$datosModel['idmesa'], PDO::PARAM_STR);
            
             if ($stmt->execute()) {
                return 'success';
@@ -35,7 +37,7 @@ require_once 'Model/conexion.php';
  	 }	
 
  	 	public function deleteReservaModel($datosModel,$tabla){
-      $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idReserva = :idreserva");
+      $stmt = Conexion::conectar()->prepare("DELETE FROM reserva WHERE idReserva = :idreserva");
 
       $stmt->bindParam(':idreserva', $datosModel, PDO::PARAM_INT);
 
@@ -51,7 +53,7 @@ require_once 'Model/conexion.php';
      public function totalReservasModel($tabla){
       date_default_timezone_set('America/Argentina/Buenos_Aires');
           $fecha = date('Y-m-d').'<br>';
-         $sql=Conexion::conectar()->prepare("SELECT * , COUNT(*) as total FROM $tabla WHERE fechaReservada >= '$fecha'");
+         $sql=Conexion::conectar()->prepare("SELECT * , COUNT(*) as total FROM reserva WHERE fechaReservada >= '$fecha'");
          $sql->execute();
          return $sql->fetchAll();
          $sql->close();
@@ -59,7 +61,7 @@ require_once 'Model/conexion.php';
 
      public function editarReservasModel($datosModel,$tabla){
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $sql=Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idreserva = :idreserva");
+        $sql=Conexion::conectar()->prepare("SELECT * FROM reserva WHERE idreserva = :idreserva");
         $sql->bindParam(':idreserva',$datosModel, PDO::PARAM_INT);
         $sql->execute();
         return $sql->fetch();
@@ -67,7 +69,7 @@ require_once 'Model/conexion.php';
      } 
 
          function actualizarReservasModel($datosModel,$tabla){
-      $sql=Conexion::conectar()->prepare("UPDATE $tabla SET nombrecliente = :nombrecliente,
+      $sql=Conexion::conectar()->prepare("UPDATE reserva SET nombrecliente = :nombrecliente,
        cantidadpersonas = :cantidadpersonas, telefono=:telefono,diallegada=:diallegada,horallegada=:horallegada,observaciones=:observaciones WHERE idreserva = :idreserva");
 
       $sql->bindParam(':nombrecliente',$datosModel['nombrecliente'], PDO::PARAM_STR);

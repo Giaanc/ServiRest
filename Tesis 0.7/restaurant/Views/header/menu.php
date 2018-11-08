@@ -112,7 +112,7 @@
 
       <!-- USUARIO NO ADMINISTRADOR -->
        <li class="nav-item dropdown  nav-item active float-xs-right">
-         <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-windows btn btn-warning btn-sm" aria-hidden="true"></i> Hola ! <?php echo  ' ' .strtoupper($_SESSION[ 'nombreusuario']);  ?></a>
+         <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-windows btn btn-warning btn-sm" aria-hidden="true"></i> Hola ! <?php echo  ' ' .strtoupper($_SESSION[ 'nombre']);  ?></a>
          <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown">
           <a class="dropdown-item" href="salir"><i class="btn btn-primary btn-sm fa fa-window-close-o"> </i> Cerrar Sesión</a>
        
