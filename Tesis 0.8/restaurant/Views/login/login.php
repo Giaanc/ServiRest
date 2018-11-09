@@ -16,7 +16,7 @@
      $resultado = $sql->fetch();
         if ($resultado != false) {
 	      $_SESSION['nombre'] = $nombreusuario;
-	      $_SESSION['rut'] = $rut;
+	      $_SESSION['rut'] = $resultado['rut'];
 	      $enviar .=  '<center> Bienvenido <br>'. ucwords($resultado['nombre']). '</center> <br>';
 	      $enviar .= '<meta http-equiv="refresh" content="0;url=../../index">';
 	      $enviado .= '<center><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><br>

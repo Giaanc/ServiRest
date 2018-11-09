@@ -49,8 +49,8 @@ require_once 'Views/modules/ventas/conexion.php';
 	<td  class=" alert-danger" align="center"><?php echo $resultados->fechaIngresoReserva; ?></td>
 	<td class=" alert-danger"><?php echo $resultados->Observaciones; ?></td>
    <td  class=" alert-danger">&nbsp; &nbsp;
-   <a href="index.php?action=editarReservas&idreserva=<?php echo $resultados->idreserva;?>"><i class="fa fa-edit btn btn-primary btn-sm "></i></a>
-		<a href="index.php?action=reservas&idBorrar=<?php echo $resultados->idreserva;?>"<i class="fa fa-trash-o btn btn-danger btn-sm"></i></a></td>
+   <a href="index.php?action=editarReservas&idreserva=<?php echo $resultados->idReserva;?>"><i class="fa fa-edit btn btn-primary btn-sm "></i></a>
+		<a href="index.php?action=reservas&idBorrar=<?php echo $resultados->idReserva;?>"<i class="fa fa-trash-o btn btn-danger btn-sm"></i></a></td>
 </tbody>
 <?php endforeach; ?>
 </table>

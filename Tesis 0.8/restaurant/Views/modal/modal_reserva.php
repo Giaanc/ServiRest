@@ -53,17 +53,56 @@
             </div>
             </div>
 
-               <div class="col-md-6"> 
-              <div class="form-group">
-              <label for="message-text" class="form-control-label">Numero de Mesa a Reservar:</label>
-              <textarea class="form-control" id="message-text" name="idmesa" required="">1</textarea>
+            <!-- crear conexion.php en la carpeta modal, con el codigo de conexion  (require_once 'conexion.php';) -->
+ 
+            <div class="col-md-6"> 
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">Seleccione Mesa a Reservar:</label>
+               <SELECT NAME="idmesa" SIZE=1 onChange="javascript:alert('prueba');"> 
+               <OPTION VALUE=" <?php 
+        
+               //conexion a base de datos para asignar value
+
+                $mysqli = new mysqli("localhost","root","1234","restaurante");
+                if(mysqli_connect_errno()){
+                echo "Conexion Fallida", mysqli_connect_error();
+                }
+ 
+                $mysqli->set_charset("utf8");
+                $resultado = mysqli_query($mysqli,"SELECT * FROM mesas WHERE status = 'abierta'");
+                while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                echo $fila["idMesas"];                      
+                }
+                
+                 ?> " >
+                 
+                <?php 
+                
+                //conexion a base de datos para asignar combobox
+
+                $mysqli = new mysqli("localhost","root","1234","restaurante");
+                if(mysqli_connect_errno()){
+                echo "Conexion Fallida", mysqli_connect_error();
+                }
+ 
+                $mysqli->set_charset("utf8");
+                $resultado = mysqli_query($mysqli,"SELECT * FROM mesas WHERE status = 'abierta'");
+                while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                echo $fila["idMesas"];                      
+ 
+               }
+                 ?>
+
+
+               </OPTION>
+               </SELECT> 
             </div>
             </div>
 
              <div class="col-md-6"> 
               <div class="form-group">
               <label for="message-text" class="form-control-label">Rut Empleado:</label>
-              <textarea class="form-control" id="message-text" name="rut_empleado" readonly="">"<?php echo $_SESSION['nombre']; ?>"</textarea>
+              <textarea class="form-control" id="message-text" name="rut_empleado" readonly=""><?php echo $_SESSION['rut']; ?></textarea>
             </div>
             </div>
 

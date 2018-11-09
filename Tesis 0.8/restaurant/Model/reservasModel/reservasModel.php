@@ -37,7 +37,7 @@ require_once 'Model/conexion.php';
  	 }	
 
  	 	public function deleteReservaModel($datosModel,$tabla){
-      $stmt = Conexion::conectar()->prepare("DELETE FROM reserva WHERE idReserva = :idreserva");
+      $stmt = Conexion::conectar()->prepare("DELETE FROM reserva WHERE idreserva = :idreserva");
 
       $stmt->bindParam(':idreserva', $datosModel, PDO::PARAM_INT);
 
@@ -70,13 +70,13 @@ require_once 'Model/conexion.php';
 
          function actualizarReservasModel($datosModel,$tabla){
       $sql=Conexion::conectar()->prepare("UPDATE reserva SET nombrecliente = :nombrecliente,
-       cantidadpersonas = :cantidadpersonas, telefono=:telefono,diallegada=:diallegada,horallegada=:horallegada,observaciones=:observaciones WHERE idreserva = :idreserva");
+       cantidadpersonas = :cantidadpersonas, telefono=:telefono,fechareservada=:fechareservada,fechaingresoreserva=:fechaingresoreserva,observaciones=:observaciones WHERE idreserva = :idreserva");
 
       $sql->bindParam(':nombrecliente',$datosModel['nombrecliente'], PDO::PARAM_STR);
       $sql->bindParam(':cantidadpersonas',$datosModel['cantidadpersonas'], PDO::PARAM_STR);
       $sql->bindParam(':telefono',$datosModel['telefono'], PDO::PARAM_STR);
-      $sql->bindParam(':diallegada',$datosModel['diallegada'], PDO::PARAM_STR);
-      $sql->bindParam(':horallegada',$datosModel['horallegada'], PDO::PARAM_STR);
+      $sql->bindParam(':fechareservada',$datosModel['fechareservada'], PDO::PARAM_STR);
+      $sql->bindParam(':fechaingresoreserva',$datosModel['fechaingresoreserva'], PDO::PARAM_STR);
       $sql->bindParam(':observaciones',$datosModel['observaciones'], PDO::PARAM_STR);
       $sql->bindParam(':idreserva',$datosModel['idreserva'], PDO::PARAM_STR);
            

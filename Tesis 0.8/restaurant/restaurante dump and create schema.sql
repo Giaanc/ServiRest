@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `restaurante` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `restaurante`;
 -- MySQL dump 10.13  Distrib 5.7.24, for Win64 (x86_64)
 --
 -- Host: localhost    Database: restaurante
@@ -211,7 +213,7 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES ('1','1234','administrador','a','a',222,1,'0000-00-00',1,NULL);
+INSERT INTO `empleado` VALUES ('1','1234','administrador','a','a',222,1,'0000-00-00',1,NULL),('78','1234','Garzon',NULL,NULL,NULL,NULL,NULL,3,NULL);
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +281,7 @@ CREATE TABLE `mesas` (
   PRIMARY KEY (`idMesas`),
   KEY `fk_Mesas_Empleado1_idx` (`Empleado_rut1`),
   CONSTRAINT `fk_Mesas_Empleado1` FOREIGN KEY (`Empleado_rut1`) REFERENCES `empleado` (`rut`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +290,7 @@ CREATE TABLE `mesas` (
 
 LOCK TABLES `mesas` WRITE;
 /*!40000 ALTER TABLE `mesas` DISABLE KEYS */;
+INSERT INTO `mesas` VALUES (1,'abierta',1,'1'),(2,'cerrada',2,'1');
 /*!40000 ALTER TABLE `mesas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +314,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador');
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Cajera'),(3,'Garzon'),(4,'Cocinero');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,7 +389,7 @@ CREATE TABLE `reserva` (
   `apellidoMaternoCliente` varchar(20) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   `cantidadPersonas` tinyint(4) DEFAULT NULL,
-  `fechaReservada` datetime DEFAULT NULL,
+  `fechaReservada` date DEFAULT NULL,
   `fechaIngresoReserva` datetime DEFAULT NULL,
   `Observaciones` longtext,
   `Empleado_rut` varchar(10) NOT NULL,
@@ -396,7 +399,7 @@ CREATE TABLE `reserva` (
   KEY `fk_Reserva_Mesas1_idx` (`Mesas_idMesas`),
   CONSTRAINT `fk_Reserva_Empleado1` FOREIGN KEY (`Empleado_rut`) REFERENCES `empleado` (`rut`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Reserva_Mesas1` FOREIGN KEY (`Mesas_idMesas`) REFERENCES `mesas` (`idMesas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -405,6 +408,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` VALUES (1,'g','g','g',1,1,'2018-11-07','2018-11-07 00:00:00','gggggg','1',1),(4,NULL,NULL,NULL,55555,NULL,NULL,NULL,NULL,'1',1),(5,NULL,NULL,NULL,988246182,NULL,NULL,NULL,NULL,'1',1),(8,NULL,NULL,NULL,988246182,NULL,NULL,NULL,NULL,'1',1),(9,NULL,NULL,NULL,55555,NULL,NULL,NULL,NULL,'1',1),(10,NULL,NULL,NULL,988246182,NULL,NULL,NULL,NULL,'1',1),(11,NULL,NULL,NULL,55555,NULL,NULL,NULL,NULL,'1',1),(12,NULL,NULL,NULL,988246182,NULL,NULL,NULL,NULL,'1',1),(13,'A',NULL,NULL,988246182,NULL,NULL,NULL,NULL,'1',1),(14,'A',NULL,NULL,988246182,1,'2018-11-07','2018-11-07 00:00:00','Sin Restricciones','1',1),(18,'Zepeda',NULL,NULL,444,2,'2018-11-09','2018-11-07 00:00:00','Sin Restricciones','1',1);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-06  4:32:16
+-- Dump completed on 2018-11-09  3:45:08
