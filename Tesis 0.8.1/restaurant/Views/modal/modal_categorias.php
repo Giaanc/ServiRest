@@ -16,7 +16,7 @@
               <div class="form-group">
                <center> <label for="categoria-name" class="form-control-label">Nombre Categoria :</center></label>
        
-                <input type="text" class="form-control" id="categoria-name" name="nombrecategoria" required="">
+                <input type="text" class="form-control" id="categoria-name" name="nombreCategoria" required="">
               </div>
             </div>
 

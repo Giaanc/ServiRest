@@ -36,9 +36,9 @@
     <a class="navbar-brand" href="index"><i class="fa fa-table" aria-hidden="true"></i> Reserva de Mesas</a>
     <ul class="nav navbar-nav">
       <li class="nav-item dropdown nav-item active">
-        <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-product-hunt" aria-hidden="true"></i> Productos</a>
+        <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-product-hunt" aria-hidden="true"></i> Isumos</a>
         <div class="dropdown-menu" id="sub" aria-labelledby="responsiveNavbarDropdown">
-          <a id="sub" class="dropdown-item" href="listadoProd"><i class="btn btn-primary btn-sm  fa fa-list-ol"></i> Listado Productos</a>
+          <a id="sub" class="dropdown-item" href="listadoProd"><i class="btn btn-primary btn-sm  fa fa-list-ol"></i> Listado Insumos</a>
         
         </div>
       </li>

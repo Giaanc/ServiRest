@@ -8,9 +8,9 @@
         #-----------------------------------------------------------
        #INGRESAR NUEVAS CATEGORIAS
         public function agregarCategoriasModel($datosModel ,$tabla){
-      $sql = Conexion::conectar()->prepare("INSERT INTO  $tabla (nombrecategoria) VALUES(:nombrecategoria)");
+      $sql = Conexion::conectar()->prepare("INSERT INTO  categoria (nombreCategoria) VALUES (:nombrecategoria)");
 
-       $sql->bindParam(':nombrecategoria',$datosModel['nombrecategoria'], PDO::PARAM_STR);
+       $sql->bindParam(':nombrecategoria',$datosModel['nombreCategoria'], PDO::PARAM_STR);
 
        if ($sql->execute()) {
                return 'success';
@@ -25,7 +25,7 @@
        #OBTENER TODAS LAS CATEGORIAS
        public function getCategoriasModel($tabla){
          
-         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+         $sql = Conexion::conectar()->prepare("SELECT * FROM categoria");
          $sql->execute();
          return $sql->fetchAll();
 
@@ -34,7 +34,7 @@
        }
 
        public function editarCategoriasModel($datosModel,$tabla){
-        $sql = Conexion::conectar()->prepare("SELECT * FROM  $tabla WHERE idcategoria = :idcategoria");
+        $sql = Conexion::conectar()->prepare("SELECT * FROM  categoria WHERE idCategoria = :idcategoria");
 
         $sql->bindParam(':idcategoria',$datosModel,PDO::PARAM_INT);
 
@@ -45,10 +45,10 @@
        }
 
      function actualizarCategoriaModel($datosModel,$tabla){
-        $sql= Conexion::conectar()->prepare("UPDATE $tabla SET nombrecategoria = :nombrecategoria WHERE idcategoria = :idcategoria");
+        $sql= Conexion::conectar()->prepare("UPDATE categoria SET nombreCategoria = :nombreCategoria WHERE idcategoria = :idcategoria");
 
-      $sql->bindParam(':nombrecategoria',$datosModel['nombrecategoria'], PDO::PARAM_STR);
-      $sql->bindParam(':idcategoria',$datosModel['idcategoria'], PDO::PARAM_INT);
+      $sql->bindParam(':nombreCategoria',$datosModel['nombreCategoria'], PDO::PARAM_STR);
+      $sql->bindParam(':idcategoria',$datosModel['idCategoria'], PDO::PARAM_INT);
            
       if($sql->execute()){
 

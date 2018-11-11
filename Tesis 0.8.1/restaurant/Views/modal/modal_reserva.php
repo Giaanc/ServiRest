@@ -63,7 +63,7 @@
         
                //conexion a base de datos para asignar value
 
-                $mysqli = new mysqli("localhost","root","1234","restaurante");
+                $mysqli = new mysqli("localhost","root","root1234","restaurante");
                 if(mysqli_connect_errno()){
                 echo "Conexion Fallida", mysqli_connect_error();
                 }
@@ -80,7 +80,7 @@
                 
                 //conexion a base de datos para asignar combobox
 
-                $mysqli = new mysqli("localhost","root","1234","restaurante");
+                $mysqli = new mysqli("localhost","root","root1234","restaurante");
                 if(mysqli_connect_errno()){
                 echo "Conexion Fallida", mysqli_connect_error();
                 }
