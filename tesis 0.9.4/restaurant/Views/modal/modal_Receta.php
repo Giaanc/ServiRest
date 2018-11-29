@@ -1,5 +1,5 @@
 <?php  
- require_once 'Views/modules/ventas/conexion.php';
+ require_once "conexion.php";
 ?>
   <div class="modal fade bd-example-modal-lg" id="receta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -19,7 +19,7 @@
 
           <form method="POST">
           <div class="row">
-            <div class="col-md-12">  
+            <div class="col-md-6">  
             <label>Agregar Insumo A La Receta</label>
             <br><br>
               <div class="form-group">
@@ -28,7 +28,7 @@
               </div>
               
               <div class="form-group">
-                <label for="recipient-name" class="form-control-label">Seleccione Producto:</label>
+                <label for="recipient-name" class="form-control-label">Seleccione Plato:</label>
                 <select name="Productos_idProductos">
                 <?php
                 $mysqli = new mysqli("localhost","root","1234","restaurante");
@@ -75,11 +75,11 @@
           
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" name="agregarReceta">Agregar Productos</button>
+          <button type="submit" class="btn btn-primary" name="agregarReceta">Agregar Insumo</button>
           </form>
 </div>
 
 <?php  
-$platos = new PlatosController();
-$platos->agregarRecetaController();
+$receta = new RecetaController();
+$receta->agregarRecetaController();
 ?>

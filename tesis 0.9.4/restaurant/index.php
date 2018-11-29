@@ -11,6 +11,7 @@ if (!isset($_SESSION['nombre'])) {
 	require_once 'Model/productosModel/productosModel.php';
 	require_once 'Model/empleados/empleadosModel.php';
 	require_once 'Model/platos/platosModel.php';
+	require_once 'Model/receta/recetaModel.php';
 	
 
 
@@ -21,6 +22,7 @@ if (!isset($_SESSION['nombre'])) {
 	require_once 'Controller/productosController/productosController.php';
 	require_once 'Controller/empleadosController/empleadosController.php';
 	require_once 'Controller/platosController/platosController.php';
+	require_once 'Controller/recetaController/recetaController.php';
 	
 
 	$index = new MvcController();
